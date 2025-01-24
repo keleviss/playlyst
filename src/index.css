@@ -1,0 +1,79 @@
+:root {
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', serif;
+}
+
+body {
+  background-color: black;
+  color: whitesmoke;
+}
+
+a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+button,
+.btn {
+  color: whitesmoke;
+  font-size: 1rem;
+  font-weight: 500;
+  /* max-height: 3rem; */
+  padding: 0.7rem 1.4rem;
+  border-radius: 100rem;
+  border: none;
+  background-color: rgb(59, 145, 59);  
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover,
+.btn:hover {
+  cursor: pointer;
+  background-color: rgb(0, 104, 0);
+}
+
+button:active,
+.btn:active {
+  background-color: rgb(0, 50, 0);
+}
+
+.containerFit {
+  width: 1250px;
+}
+
+.App {
+  height: 100vh;
+  display: grid;
+  grid-template: 80px 1fr / 1fr 1fr;
+  /* overflow: hidden; */
+}
+
+.NavBar {
+  grid-area: span 1 / span 2;
+}
+
+.main {
+  grid-area: span 1 / span 2;
+  margin: 0 0.5rem;
+  border-top-left-radius: 0.7rem;
+  border-top-right-radius: 0.7rem;
+  background: linear-gradient(rgb(20, 20, 20) 30%, rgb(10, 10, 10) 100%);
+  display: grid;
+  grid-template: 1fr 3fr / 1fr 1fr;
+}
+
+.SearchBarContainer {
+  grid-area: span 1 / span 2;
+}
+
+.TrackResultsContainer,
+.PlaylistContainer { 
+  grid-area: span 1 / span 1;
+  padding: 2rem;
+}

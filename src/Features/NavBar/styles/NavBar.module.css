@@ -1,0 +1,67 @@
+.navBar {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: black;
+}
+
+.containerFit {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navLogo {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.userProfile:hover {
+  cursor: pointer;
+  background-color: #bbb;
+}
+
+.userImage {
+  border-radius: 100rem;
+  height: 100%;
+  transition: box-shadow .1s ease-in-out;
+}
+
+.userImage:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 5px #363636;
+}
+
+.userPanel {
+  width: 220px;
+  padding: .5rem;
+  overflow: hidden;
+
+  z-index: 10;
+  position: absolute;
+  top: 4.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+
+  border-radius: 0.6rem;
+  background-color: #363636;
+}
+
+.userPanelOption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+a.userPanelOption:hover {
+  background-color: #505050;
+}

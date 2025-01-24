@@ -1,0 +1,36 @@
+.detailsColumns {
+  margin-top: 1.5rem;
+  display: grid;
+  padding-left: 4rem;
+  grid-template: 1fr / 5fr 3fr 2fr 1fr;
+  align-items: center;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.5);
+  color: #e0e0e0;
+  font-weight: 300;
+}
+
+.titleColumn {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.albumColumn {
+  grid-area: 1 / 2 / 3 / 3;
+  justify-self: flex-start;
+}
+
+.durationColumn {
+  grid-area: 1 / 3 / 3 / 4;
+  justify-self: center;
+}
+
+.trackList {
+  max-height: 100%;
+  overflow-y: scroll;
+  padding: 1.5rem 0;
+  padding-bottom: 5rem;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

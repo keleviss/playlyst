@@ -1,0 +1,16 @@
+.trackResults {
+  height: 100%;
+  min-height: 450px;
+  max-height: 60vh;
+  overflow: hidden;
+  padding: 1.5rem;
+  background-color: rgb(31, 31, 31);
+  border-radius: 0.7rem;
+}
+
+.resultsHeader {
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
