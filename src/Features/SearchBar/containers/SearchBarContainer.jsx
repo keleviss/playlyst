@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from '../styles/SearchBar.module.css';
 import SearchBar from '../components/SearchBar';
 import { fetchSpotifyTracks } from '../../../SpotifyAPI/searchTracks';
@@ -5,11 +6,12 @@ import PropTypes from 'prop-types';
 import { msToMinSec } from '../../../HelperFunctions/helperFuncs';
 
 function SearchBarContainer(props) {
+  const [searchTerm, setSearchTerm] = useState('');
 
   const fetchTracks = (event) => {
     event.preventDefault();
-    console.log(event.target.value);
-    // fetchSpotifyTracks(event.target.value).then(results => {
+    console.log(searchTerm);
+    // fetchSpotifyTracks(searchTerm).then(results => {
     //   const tracks = results.tracks.items;
     //   if (tracks.length > 0) {
     //     props.setSearchResults(tracks.map(item => {
@@ -31,7 +33,7 @@ function SearchBarContainer(props) {
   return (
     <div className={'SearchBarContainer ' + styles.searchBarContainer}>
       <div className={'containerFit ' + styles.containerFit}>
-        <SearchBar fetchTracks={fetchTracks} />
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} fetchTracks={fetchTracks} />
       </div>
     </div>
   );
