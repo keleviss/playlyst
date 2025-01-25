@@ -6,11 +6,16 @@ import PropTypes from 'prop-types';
 import { msToMinSec } from '../../../HelperFunctions/helperFuncs';
 
 function SearchBarContainer(props) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [input, setInput] = useState('');
+
+  const onInputChange = (event) => {
+    const input = event.target.value;
+    setInput(input);
+  }
 
   const fetchTracks = (event) => {
     event.preventDefault();
-    console.log(searchTerm);
+    console.log(input);
     // fetchSpotifyTracks(searchTerm).then(results => {
     //   const tracks = results.tracks.items;
     //   if (tracks.length > 0) {
@@ -33,7 +38,7 @@ function SearchBarContainer(props) {
   return (
     <div className={'SearchBarContainer ' + styles.searchBarContainer}>
       <div className={'containerFit ' + styles.containerFit}>
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} fetchTracks={fetchTracks} />
+        <SearchBar input={input} onInputChange={onInputChange} fetchTracks={fetchTracks} />
       </div>
     </div>
   );

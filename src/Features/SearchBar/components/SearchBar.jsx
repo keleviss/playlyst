@@ -7,8 +7,8 @@ function SearchBar(props) {
       <label className={styles.searchLabel}>Create your Spotify playlist</label>
       <div>
         <input className={styles.searchBar}
-          onChange={props.setSearchTerm}
-          value={props.searchTerm}
+          onChange={props.onInputChange}
+          value={props.input}
           type='text'
           id='searchBar'
           name='searchBar'
@@ -23,8 +23,8 @@ function SearchBar(props) {
 
 SearchBar.propTypes = {
   fetchTracks: PropTypes.func.isRequired,
-  searchTerm: PropTypes.string.isRequired,
-  setSearchTerm: PropTypes.func.isRequired,
+  input: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
