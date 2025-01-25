@@ -16,23 +16,23 @@ function SearchBarContainer(props) {
   const fetchTracks = (event) => {
     event.preventDefault();
     console.log(input);
-    // fetchSpotifyTracks(searchTerm).then(results => {
-    //   const tracks = results.tracks.items;
-    //   if (tracks.length > 0) {
-    //     props.setSearchResults(tracks.map(item => {
-    //       return {
-    //         "id": item.id,
-    //         "title": item.name,
-    //         "artists": item.artists[0].name,
-    //         "album": item.album,
-    //         "duration": msToMinSec(item.duration_ms),
-    //         "image": item.album.images[0].url,
-    //       }
-    //     }));
-    //   } else {
-    //     console.log('Error fetching tracks!');
-    //   }
-    // });
+    fetchSpotifyTracks(input).then(results => {
+      const tracks = results.tracks.items;
+      if (tracks.length > 0) {
+        props.setSearchResults(tracks.map(item => {
+          return {
+            "id": item.id,
+            "title": item.name,
+            "artists": item.artists[0].name,
+            "album": item.album,
+            "duration": msToMinSec(item.duration_ms),
+            "image": item.album.images[0].url,
+          }
+        }));
+      } else {
+        console.log('Error fetching tracks!');
+      }
+    });
   }
 
   return (
