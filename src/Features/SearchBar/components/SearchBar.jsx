@@ -1,8 +1,9 @@
 import styles from '../styles/SearchBar.module.css';
+import PropTypes from 'prop-types';
 
-function SearchBar() {
+function SearchBar({ fetchTracks }) {
   return (
-    <form className={styles.searchBarForm} autoComplete='off'>
+    <form onSubmit={fetchTracks} className={styles.searchBarForm} autoComplete='off'>
       <label className={styles.searchLabel}>Create your Spotify playlist</label>
       <div>
         <input className={styles.searchBar} type='text' id='searchBar' name='searchBar' placeholder='What do you want to play?'></input>
@@ -11,5 +12,10 @@ function SearchBar() {
     </form>
   );
 }
+
+
+SearchBar.propTypes = {
+  fetchTracks: PropTypes.func.isRequired,
+};
 
 export default SearchBar;

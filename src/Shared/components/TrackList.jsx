@@ -3,6 +3,7 @@ import styles from './TrackList.module.css';
 import Track from './Track';
 
 function TrackList(props) {
+
   return (
     <>
       <div className={styles.detailsColumns}>
@@ -13,13 +14,31 @@ function TrackList(props) {
         </span>
       </div>
       <ul className={styles.trackList}>
+        {props.items.length > 0 ?
+          (
+            props.items.map((item) => (
+              <Track
+                key={props.icon === 'fa-plus' ? 'result_' + item.id : 'playlistTrack_' + item.id}
+                icon={props.icon}
+                image={item.image}
+                title={item.title}
+                artist={item.artists}
+                album={item.album}
+                duration={item.duration}
+                action={() => props.action(item.id)}
+              />
+            ))
+          ) : (
+            <></>
+          )
+        }
+        {/* <Track icon={props.icon}/>
         <Track icon={props.icon}/>
         <Track icon={props.icon}/>
         <Track icon={props.icon}/>
         <Track icon={props.icon}/>
         <Track icon={props.icon}/>
-        <Track icon={props.icon}/>
-        <Track icon={props.icon}/>
+        <Track icon={props.icon}/> */}
       </ul>
     </>
   );
@@ -27,6 +46,8 @@ function TrackList(props) {
 
 TrackList.propTypes = {
   icon: PropTypes.string.isRequired,
+  items: PropTypes.array,
+  action: PropTypes.func,
 };
 
 export default TrackList;
