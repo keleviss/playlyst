@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 function SearchBarContainer(props) {
 
   const fetchTracks = (event) => {
-    event.preventDefault;
+    event.preventDefault();
     fetchSpotifyTracks(event.target.value)
       .then(results => {
         if (results) {
