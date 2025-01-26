@@ -34,11 +34,16 @@ function SearchBar(props) {
 
   return (
     <form onSubmit={props.fetchTracks} id='searchForm' className={styles.searchBarForm} autoComplete='off'>
-      <label className={styles.searchLabel}>Create your Spotify playlist</label>
+      <label className={styles.searchLabel}>Search for tracks</label>
       <div className={styles.searchBarButtonContainer}>
         <div style={searchBarDivStyles} className={styles.searchBarDiv}>
           <button type='submit' className={styles.searchButton}>
-            <i title='Search' onClick={onSearchClick} style={searchIconStyles} className={"fa-solid fa-magnifying-glass fa-lg " + styles.searchIcon}></i>
+            <i
+              title='Search'
+              onClick={onSearchClick}
+              style={searchIconStyles}
+              className={"fa-solid fa-magnifying-glass fa-lg " + styles.searchIcon}>
+            </i>
           </button>
           <input className={styles.searchBar}
             onFocus={onFocusHanlder}
@@ -51,9 +56,9 @@ function SearchBar(props) {
             placeholder='What do you want to play?'
           ></input>
           {props.input === '' ? (
-            <i title='Clear input field' className={"fa-solid fa-x fa-lg " + styles.xMarkHidden}></i>
+            <i title='Clear input field' className={"fa-solid fa-xmark fa-lg " + styles.xMarkHidden}></i>
           ) : (
-            <i title='Clear input field' className={"fa-solid fa-x fa-lg " + styles.xMark} onClick={onXMarkClick}></i>
+            <i title='Clear input field' className={"fa-solid fa-xmark fa-lg " + styles.xMark} onClick={onXMarkClick}></i>
           )
           }
         </div>

@@ -54,7 +54,7 @@ function Playlist(props) {
           </h2>
         )
         }
-        <Button className={'btn ' + styles.playlistSave} title='Save' />
+        <Button className={'btn ' + styles.playlistSave} title='Save playlist' />
       </div>
       <div className={styles.playlist}>
         <TrackList

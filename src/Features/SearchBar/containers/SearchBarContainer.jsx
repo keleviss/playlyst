@@ -33,6 +33,7 @@ function SearchBarContainer(props) {
                 "album": item.album.name,
                 "duration": msToMinSec(item.duration_ms),
                 "image": item.album.images[0].url,
+                "uri": item.uri,
               }
             }));
           } else {

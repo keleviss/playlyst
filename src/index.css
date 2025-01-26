@@ -89,7 +89,7 @@ a {
 @media only screen and (max-width: 1060px) {
 
   .main {
-    grid-template: 300px 700px 700px / 100%;
+    grid-template: 200px 500px 500px / 100%;
   }
 
   .SearchBarContainer {
