@@ -37,7 +37,7 @@ function Playlist(props) {
         {isEditing ? (
           <textarea
             rows='1'
-            cols='12'
+            cols='5'
             id='playlistTitleInput'
             type='text'
             value={props.title}
@@ -50,11 +50,15 @@ function Playlist(props) {
           ></textarea>
         ) : (
           <h2 className={styles.playlistTitle} onClick={handleClick}>
-            {props.title.length <= 20 ? props.title : `${props.title.slice(0, 16)}...`}
+            {props.title}
           </h2>
         )
         }
-        <Button className={'btn ' + styles.playlistSave} title='Save playlist' />
+        <Button
+          className={'btn ' + styles.playlistSave}
+          title='Save playlist'
+          onClickHandler={props.savePlaylist}
+        />
       </div>
       <div className={styles.playlist}>
         <TrackList
@@ -73,6 +77,7 @@ Playlist.propTypes = {
   tracks: PropTypes.array,
   removeTrack: PropTypes.func,
   setPlaylistTitle: PropTypes.func,
+  savePlaylist: PropTypes.func,
 };
 
 export default Playlist;

@@ -5,22 +5,24 @@ function PlaylistContainer(props) {
   return (
     <div className='PlaylistContainer'>
       <Playlist 
-        title={props.playlistTitle}
-        setPlaylistTitle={props.setPlaylistTitle}
+        title={props.playlistDetails.name}
+        setPlaylistTitle={props.setPlaylistDetails}
         changeTitle={props.onChangeTitle}
         tracks={props.tracks}
         removeTrack={props.removeTrack}
+        savePlaylist={props.savePlaylist}
       />
     </div>
   );
 }
 
 PlaylistContainer.propTypes = {
-  playlistTitle: PropTypes.string,
+  playlistDetails: PropTypes.object,
   onChangeTitle: PropTypes.func,
   tracks: PropTypes.array,
   removeTrack: PropTypes.func,
-  setPlaylistTitle: PropTypes.func,
+  setPlaylistDetails: PropTypes.func,
+  savePlaylist: PropTypes.func,
 };
 
 export default PlaylistContainer;

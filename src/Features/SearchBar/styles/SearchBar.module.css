@@ -1,15 +1,11 @@
 .searchBarContainer {
+  width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.containerFit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .searchBarForm {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -91,11 +87,24 @@
   visibility: hidden;
 }
 
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 1060px) {
   .searchBarContainer {
-    padding: 0 0.5rem;
+    padding: 0.8rem 0.8rem 0 0.8rem;
+    align-items: flex-start;
   }
 
+  .searchBarButtonContainer,
+  .searchBarDiv {
+    width: 100%;
+  }
+
+  .searchLabel {
+    display: none;
+  }
+
+}
+
+@media only screen and (max-width: 540px) {
   .searchBar {
     font-size: 1rem;
   }

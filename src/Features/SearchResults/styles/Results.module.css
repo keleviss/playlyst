@@ -30,3 +30,9 @@
     max-height: 400px;
   }
 }
+
+@media only screen and (max-width: 540px) {
+  .resultsTitle {
+    font-size: 1.5rem;
+  }
+}
