@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   padding: 1rem;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.466);
 }
 
 .containerFit {
@@ -55,6 +55,7 @@
 }
 
 .userPanelOption {
+  color: whitesmoke;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -1,5 +1,6 @@
 .track {
   width: 100%;
+  height: fit-content;
   display: flex;
   gap: 1rem;
   /* padding: 1rem; */

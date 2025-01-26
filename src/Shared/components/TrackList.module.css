@@ -1,5 +1,5 @@
 .detailsColumns {
-  margin-top: 1.5rem;
+  /* margin-top: 2rem; */
   display: grid;
   padding-left: 4rem;
   grid-template: 1fr / 5fr 3fr 2fr 1fr;
@@ -24,13 +24,12 @@
 }
 
 .trackList {
-  max-height: 100%;
+  height: 100%;
   overflow-y: scroll;
   padding: 1.5rem 0;
-  padding-bottom: 5rem;
   margin: 0;
   list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  display: grid;
+  align-content: start;
+  row-gap: 1rem;
 }

@@ -8,7 +8,7 @@ function UserPanel({ profileData, onLoggout }) {
       <a href={profileData.spotify_url} className={styles.userPanelOption} target='_blank'>
           {profileData.id} <i className="fa-solid fa-arrow-up-right-from-square"></i>
       </a>
-      <Button className={styles.userPanelOption} title={"Log out"} onClickHandler={onLoggout}/>
+      <Button className={'btn ' + styles.userPanelOption} title={"Log out"} onClickHandler={onLoggout}/>
     </div>
   );
 }

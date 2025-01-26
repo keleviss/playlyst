@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import styles from '../styles/SearchBar.module.css';
 import SearchBar from '../components/SearchBar';
 import { fetchSpotifyTracks } from '../../../SpotifyAPI/searchTracks';
-import PropTypes from 'prop-types';
 import { msToMinSec } from '../../../HelperFunctions/helperFuncs';
+import { redirectToAuthCodeFlow } from '../../../SpotifyAPI/userLogin';
 
 function SearchBarContainer(props) {
   const [input, setInput] = useState('');
@@ -13,37 +14,52 @@ function SearchBarContainer(props) {
     setInput(input);
   }
 
+  const onInputClear = () => {
+    setInput('');
+  }
+
   const fetchTracks = (event) => {
     event.preventDefault();
-    console.log(input);
-    fetchSpotifyTracks(input).then(results => {
-      const tracks = results.tracks.items;
-      if (tracks.length > 0) {
-        props.setSearchResults(tracks.map(item => {
-          return {
-            "id": item.id,
-            "title": item.name,
-            "artists": item.artists[0].name,
-            "album": item.album,
-            "duration": msToMinSec(item.duration_ms),
-            "image": item.album.images[0].url,
+    if (props.loggedIn) {
+      if (input !== '') {
+        fetchSpotifyTracks(input).then(results => {
+          if (results) {
+            const tracks = results.tracks.items;
+            props.setSearchResults(tracks.map(item => {
+              return {
+                "id": item.id,
+                "title": item.name,
+                "artists": item.artists[0].name,
+                "album": item.album.name,
+                "duration": msToMinSec(item.duration_ms),
+                "image": item.album.images[0].url,
+              }
+            }));
+          } else {
+            console.log('Error fetching tracks!');
           }
-        }));
+        });
       } else {
-        console.log('Error fetching tracks!');
+        console.warn("Search Bar contains empty string! Please type something in the search bar");
       }
-    });
+    } else {
+      redirectToAuthCodeFlow();
+    }
   }
 
   return (
     <div className={'SearchBarContainer ' + styles.searchBarContainer}>
-      <div className={'containerFit ' + styles.containerFit}>
-        <SearchBar input={input} onInputChange={onInputChange} fetchTracks={fetchTracks} />
-      </div>
+      <SearchBar
+        input={input}
+        onInputChange={onInputChange}
+        onInputClear={onInputClear}
+        fetchTracks={fetchTracks}
+      />
     </div>
   );
 }
 SearchBarContainer.propTypes = {
+  loggedIn: PropTypes.bool,
   setSearchResults: PropTypes.func,
 };
 

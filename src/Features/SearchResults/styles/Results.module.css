@@ -1,16 +1,26 @@
+.resultsHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.resultsTitle {
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1;
+  flex: 2 1;
+}
+
+.hiddenButton {
+  flex: 1 1;
+  visibility: hidden;
+}
+
 .trackResults {
-  height: 100%;
-  min-height: 450px;
-  max-height: 60vh;
   overflow: hidden;
   padding: 1.5rem;
   background-color: rgb(31, 31, 31);
   border-radius: 0.7rem;
 }
-
-.resultsHeader {
-  font-size: 1.7rem;
-  font-weight: 600;
-  line-height: 1;
-}
-

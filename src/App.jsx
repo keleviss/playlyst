@@ -4,14 +4,21 @@ import SearchBarContainer from './Features/SearchBar/containers/SearchBarContain
 import ResultsContainer from './Features/SearchResults/containers/ResultsContainer';
 import PlaylistContainer from './Features/Playlist/containers/PlaylistContainer';
 import { userLogin } from './SpotifyAPI/userLogin';
-import { results } from './HelperFunctions/results';
 
 function App() {
   const [profileData, setProfileData] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const [searchResults, setSearchResults] = useState([]);
+  useEffect(() => {
+    userLogin().then(profile => {
+      if (profile) {
+        setProfileData(profile);
+        setLoggedIn(true);
+      }
+    });
+  }, []);
 
+  const [searchResults, setSearchResults] = useState([]);
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const addTrackToPlaylist = (id) => {
@@ -25,22 +32,39 @@ function App() {
     setPlaylistTracks(prev => prev.filter(item => item.id !== id));
   };
 
-  useEffect(() => {
-    userLogin().then(portait => {
-    if(portait) {
-        setProfileData(portait);
-        setLoggedIn(true);
-      }
-    });
-  }, []);
+  const [playlistTitle, setPlaylistTitle] = useState('New Playlist');
+
+  const handleChangeTitle = (event) => {
+    setPlaylistTitle(event.target.value);
+  }
 
   return (
     <div className='App'>
-      <NavBar profileData={profileData} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-      <div className='main'>
-        <SearchBarContainer setSearchResults={setSearchResults}/>
-        <ResultsContainer addTrack={addTrackToPlaylist} results={searchResults}/>
-        <PlaylistContainer removeTrack={removeTrackFromPlaylist} tracks={playlistTracks}/>
+      <NavBar
+        profileData={profileData}
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+      />
+      <div className='containerFull'>
+        <div className='containerFit'>
+          <div className='main'>
+            <SearchBarContainer
+              setSearchResults={setSearchResults}
+              loggedIn={loggedIn}
+            />
+            <ResultsContainer
+              addTrack={addTrackToPlaylist}
+              results={searchResults}
+            />
+            <PlaylistContainer
+              playlistTitle={playlistTitle}
+              setPlaylistTitle={setPlaylistTitle}
+              onChangeTitle={handleChangeTitle}
+              removeTrack={removeTrackFromPlaylist}
+              tracks={playlistTracks}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -5,8 +5,6 @@ import Button from '../../../Shared/components/Buttons';
 import UserProfileContainer from './UserProfileContainer';
 
 function Navbar(props) {
-  const clientId = '48d1d399d53d4e67b0cbd4e541a71ff4';
-
   return (
     <nav className={'NavBar ' + styles.navBar}>
       <div className={'containerFit ' + styles.containerFit}>
@@ -15,7 +13,7 @@ function Navbar(props) {
           {props.loggedIn ? (
             <UserProfileContainer profileData={props.profileData} setLoggedIn={props.setLoggedIn}/>
           ) : (
-            <Button className={styles.login} title='Login' onClickHandler={() => redirectToAuthCodeFlow(clientId)} />
+            <Button className={'btn '+ styles.login} title='Login' onClickHandler={() => redirectToAuthCodeFlow()} />
           )
           }
         </div>
