@@ -3,7 +3,7 @@ import NavBar from './Features/NavBar/containers/NavBar';
 import SearchBarContainer from './Features/SearchBar/containers/SearchBarContainer';
 import ResultsContainer from './Features/SearchResults/containers/ResultsContainer';
 import PlaylistContainer from './Features/Playlist/containers/PlaylistContainer';
-import ModalContainer from './Features/SavingModal/containers/ModalContainer';
+import SavingModal from './Shared/components/SavingModal';
 import Notification from './Shared/components/Notification';
 import { userLogin } from './SpotifyAPI/userLogin';
 import { savePlaylist } from './SpotifyAPI/savePlaylist';
@@ -55,10 +55,18 @@ function App() {
 
   const [savingModal, setSavingModal] = useState(false);
 
+  const showSavingModal = () => {
+    setSavingModal(true);
+  }
+
+  const closeSavingModal = () => {
+    setSavingModal(false);
+  }
+
   const savePlaylistHandle = async () => {
     if (loggedIn) {
       if (playlistTracks.length > 0) {
-        setSavingModal(true);
+        showSavingModal();
         // TODO: Implement saving modal
         // const playlist = await savePlaylist(profileData.id, playlistDetails, playlistTracks);
       } else {
@@ -92,7 +100,7 @@ function App() {
       />
       <div className='containerFull'>
         {savingModal ? (
-          <ModalContainer />
+          <SavingModal closeSavingModal={closeSavingModal}/>
         ) : (
           <></>
         )}
@@ -123,10 +131,6 @@ function App() {
               tracks={playlistTracks}
               savePlaylist={savePlaylistHandle}
             />
-            {/* {savingModal ? (
-            ): (
-              <></>
-            )} */}
           </div>
         </div>
       </div>
