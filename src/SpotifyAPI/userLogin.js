@@ -1,34 +1,39 @@
 export async function userLogin() {
   const clientId = '48d1d399d53d4e67b0cbd4e541a71ff4';
+  const error = extractError();
   const code = extractCode();
 
-  if (code) {
-    console.log("We found a code! Let's see if we have an access token");
-    const access_token = localStorage.getItem('access_token');
+  if (!error) {
+    if (code) {
+      console.log("We found a code! Let's see if we have an access token");
+      const access_token = localStorage.getItem('access_token');
 
-    if (!access_token || access_token === 'undefined') {
-      console.log("We did not find an access token! Let's generate one!");
+      if (!access_token || access_token === 'undefined') {
+        console.log("We did not find an access token! Let's generate one!");
 
-      const accessToken = await getAccessToken(clientId, code);
-      if (accessToken) {
-        localStorage.setItem('access_token', accessToken);
-        const profile = await fetchProfile(accessToken);
-        console.log(profile);
-        return profileData(profile);
+        const accessToken = await getAccessToken(clientId, code);
+        if (accessToken) {
+          localStorage.setItem('access_token', accessToken);
+          const profile = await fetchProfile(accessToken);
+          console.log(profile);
+          return profileData(profile);
+        }
+      } else {
+        console.log("Existing access token found: " + access_token + " Let's fetch user data");
+        const profile = await fetchProfile(access_token);
+        if (profile) {
+          console.log(profile);
+          return profileData(profile);
+        } else {
+          console.log('profile is NOT ok');
+          localStorage.removeItem('access_token');
+        }
       }
     } else {
-      console.log("Existing access token found: " + access_token + " Let's fetch user data");
-      const profile = await fetchProfile(access_token);
-      if (profile) {
-        console.log(profile);
-        return profileData(profile);
-      } else {
-        console.log('profile is NOT ok');
-        localStorage.removeItem('access_token');
-      }
+      console.log("We did not find a code! We cannot check for the access token");
     }
   } else {
-    console.log("We did not find a code! We cannot check for the access token");
+    return error;
   }
 }
 
@@ -43,14 +48,34 @@ async function profileData(profile) {
   };
 }
 
+function extractError() {
+  const params = new URLSearchParams(window.location.search);
+
+  const error = params.get("error");
+
+  if (error) {
+    window.history.replaceState({}, document.title, "/");
+    return error;
+  }
+}
+
 function extractCode() {
   const params = new URLSearchParams(window.location.search);
+
+  const error = params.get("error");
+
+  if (error) {
+    window.history.replaceState({}, document.title, "/");
+    return error;
+  }
+
   const code = params.get("code");
+
   if (code) {
     localStorage.setItem('code', code);
     window.history.replaceState({}, document.title, "/"); // Remove code from URL
     return code;
-  }  else {
+  } else {
     const storedCode = localStorage.getItem('code');
     return storedCode;
   }
@@ -67,8 +92,8 @@ export const redirectToAuthCodeFlow = async () => {
   const params = new URLSearchParams();
   params.append("client_id", clientId);
   params.append("response_type", "code");
-  params.append("redirect_uri", "https://playlistjammming.netlify.app/");
-  // params.append("redirect_uri", "http://localhost:5173/callback");
+  // params.append("redirect_uri", "https://playlistjammming.netlify.app/");
+  params.append("redirect_uri", "http://localhost:5173/callback");
   params.append("scope", "user-read-private user-read-email playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public");
   params.append("code_challenge_method", "S256");
   params.append("code_challenge", challenge);
@@ -103,8 +128,8 @@ async function getAccessToken(clientId, code) {
   params.append("client_id", clientId);
   params.append("grant_type", "authorization_code");
   params.append("code", code);
-  params.append("redirect_uri", "https://playlistjammming.netlify.app/");
-  // params.append("redirect_uri", "http://localhost:5173/callback");
+  // params.append("redirect_uri", "https://playlistjammming.netlify.app/");
+  params.append("redirect_uri", "http://localhost:5173/callback");
   params.append("code_verifier", verifier);
 
   const result = await fetch("https://accounts.spotify.com/api/token", {
@@ -124,7 +149,7 @@ async function fetchProfile(token) {
       method: "GET", headers: { Authorization: `Bearer ${token}` }
     });
 
-    if(result.ok) {
+    if (result.ok) {
       return await result.json();
     }
 

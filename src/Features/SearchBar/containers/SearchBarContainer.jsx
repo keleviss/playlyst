@@ -41,10 +41,12 @@ function SearchBarContainer(props) {
           }
         });
       } else {
+        props.showNotification('searchEmptyString');
         console.warn("Search Bar contains empty string! Please type something in the search bar");
       }
     } else {
-      redirectToAuthCodeFlow();
+      // redirectToAuthCodeFlow();
+      props.showNotification('searchNoLogin');
     }
   }
 
@@ -62,6 +64,7 @@ function SearchBarContainer(props) {
 SearchBarContainer.propTypes = {
   loggedIn: PropTypes.bool,
   setSearchResults: PropTypes.func,
+  showNotification: PropTypes.func,
 };
 
 export default SearchBarContainer;

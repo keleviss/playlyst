@@ -3,8 +3,11 @@ import NavBar from './Features/NavBar/containers/NavBar';
 import SearchBarContainer from './Features/SearchBar/containers/SearchBarContainer';
 import ResultsContainer from './Features/SearchResults/containers/ResultsContainer';
 import PlaylistContainer from './Features/Playlist/containers/PlaylistContainer';
+import ModalContainer from './Features/SavingModal/containers/ModalContainer';
+import Notification from './Shared/components/Notification';
 import { userLogin } from './SpotifyAPI/userLogin';
 import { savePlaylist } from './SpotifyAPI/savePlaylist';
+import { notifications } from './HelperFunctions/notifications';
 
 function App() {
   const [profileData, setProfileData] = useState({});
@@ -13,8 +16,12 @@ function App() {
   useEffect(() => {
     userLogin().then(profile => {
       if (profile) {
-        setProfileData(profile);
-        setLoggedIn(true);
+        if (typeof (profile) === 'object') {
+          setProfileData(profile);
+          setLoggedIn(true);
+        } else if (typeof (profile) === 'string') {
+          showNotification("accountAccessDenied");
+        }
       }
     });
   }, []);
@@ -46,11 +53,34 @@ function App() {
     }));
   }
 
-  const onSaveHandle = async () => {
-    if (playlistTracks.length > 0) {
-      const playlist = await savePlaylist(profileData.id, playlistDetails, playlistTracks);
-      // console.log(playlist);
+  const [savingModal, setSavingModal] = useState(false);
+
+  const savePlaylistHandle = async () => {
+    if (loggedIn) {
+      if (playlistTracks.length > 0) {
+        setSavingModal(true);
+        // TODO: Implement saving modal
+        // const playlist = await savePlaylist(profileData.id, playlistDetails, playlistTracks);
+      } else {
+        showNotification('saveNoTracks');
+      }
+    } else {
+      showNotification('saveNoLogin');
     }
+  }
+
+  const [notification, setNotification] = useState({});
+  const [isNotificationTriggered, setIsNotificationTriggered] = useState(false);
+
+  const showNotification = (notificationId) => {
+    setNotification(notifications[notificationId]);
+    setIsNotificationTriggered(true);
+    setTimeout(hideNotification, 5000);
+  };
+
+  const hideNotification = () => {
+    setNotification({});
+    setIsNotificationTriggered(false);
   }
 
   return (
@@ -61,11 +91,25 @@ function App() {
         setLoggedIn={setLoggedIn}
       />
       <div className='containerFull'>
+        {savingModal ? (
+          <ModalContainer />
+        ) : (
+          <></>
+        )}
+        {isNotificationTriggered ? (
+          <Notification
+            notification={notification}
+            hideNotification={hideNotification}
+          />
+        ) : (
+          <></>
+        )}
         <div className='containerFit'>
           <div className='main'>
             <SearchBarContainer
               setSearchResults={setSearchResults}
               loggedIn={loggedIn}
+              showNotification={showNotification}
             />
             <ResultsContainer
               addTrack={addTrackToPlaylist}
@@ -77,8 +121,12 @@ function App() {
               onChangeTitle={handleChangeTitle}
               removeTrack={removeTrackFromPlaylist}
               tracks={playlistTracks}
-              savePlaylist={onSaveHandle}
+              savePlaylist={savePlaylistHandle}
             />
+            {/* {savingModal ? (
+            ): (
+              <></>
+            )} */}
           </div>
         </div>
       </div>

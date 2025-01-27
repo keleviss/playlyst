@@ -80,6 +80,12 @@ a {
   padding: 2rem;
 }
 
+.ModalContainer {
+  padding: 10px;
+  position: absolute;
+  top: 70px;
+}
+
 @media only screen and (max-width: 1250px) {
   .containerFit {
     width: 100%;
@@ -104,6 +110,5 @@ a {
   .PlaylistContainer {
     padding: 0.8rem;
   }
-
 
 }
