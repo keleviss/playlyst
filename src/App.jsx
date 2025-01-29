@@ -64,7 +64,7 @@ function App() {
       if (playlistTracks.length > 0) {
         savePlaylist(profileData.id, playlistDetails, playlistTracks)
           .then(response => {
-            if(response) {
+            if (response) {
               console.log(response);
               showNotification("savePlaylist");
               setPlaylistTracks([]);
@@ -129,6 +129,15 @@ function App() {
               tracks={playlistTracks}
               savePlaylist={showSavingModal}
             />
+            <div className='creditsContainer'>
+              <div className='developerContainer'>
+                <span>Developed by <a href='https://github.com/keleviss' target='_blank'><i className="fa-brands fa-github"></i> Keleviss</a></span>
+              </div>
+              <div className='spotifyContainer'>
+                <span>Powered by</span>
+                <img className='spotifyLogo' src='/src/assets/spotify_logo_white.png' alt='Description of image' />
+              </div>
+            </div>
           </div>
         </div>
       </div>

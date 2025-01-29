@@ -8,12 +8,12 @@ function Navbar(props) {
   return (
     <nav className={'NavBar ' + styles.navBar}>
       <div className={'containerFit ' + styles.containerFit}>
-        <h1 className={styles.navLogo}>Jammming</h1>
+        <h1 className={styles.navLogo}>Spotlist</h1>
         <div className={styles.loginContainer}>
           {props.loggedIn ? (
-            <UserProfileContainer profileData={props.profileData} setLoggedIn={props.setLoggedIn}/>
+            <UserProfileContainer profileData={props.profileData} setLoggedIn={props.setLoggedIn} />
           ) : (
-            <Button className={'btn '+ styles.login} title='Login' onClickHandler={() => redirectToAuthCodeFlow()} />
+            <Button className={'btn ' + styles.login} title='Login' onClickHandler={() => redirectToAuthCodeFlow()} />
           )
           }
         </div>
