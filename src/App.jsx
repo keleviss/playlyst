@@ -157,7 +157,7 @@ function App() {
               </div>
               <div className='spotifyContainer'>
                 <span>Powered by</span>
-                <img className='spotifyLogo' src='./src/assets/spotify_logo_white.png' alt='Description of image' />
+                <img className='spotifyLogo' src='/assets/spotify_logo_white.png' alt='Description of image' />
               </div>
             </div>
           </div>
