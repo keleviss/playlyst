@@ -1,6 +1,7 @@
 .notificationContainer {
   padding: 0 0.5rem;
-  position: absolute;
+  position: fixed;
+  z-index: 15;
   top: 20px;
 }
 
@@ -20,8 +21,13 @@
 }
 
 .notification.error {
-  color: rgb(187, 0, 0);
-  border-left: 5px solid rgb(216, 0, 0);
+  color: rgb(233, 48, 48);
+  border-left: 5px solid rgb(180, 0, 0);
+}
+
+.notification.success {
+  color: rgb(50, 194, 50);
+  border-left: 5px solid rgb(38, 148, 38);
 }
 
 .xMark {
@@ -42,6 +48,12 @@
 .xMark.error:hover {
   cursor: pointer;
   background-color: rgb(216, 0, 0);
+  color: rgb(46, 46, 46);
+}
+
+.xMark.success:hover {
+  cursor: pointer;
+  background-color: rgb(50, 194, 50);
   color: rgb(46, 46, 46);
 }
 

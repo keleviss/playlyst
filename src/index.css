@@ -46,7 +46,6 @@ a {
 
 .containerFit {
   width: 1250px;
-  /* justify-content: center; */
   display: flex;
 }
 

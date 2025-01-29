@@ -5,9 +5,7 @@ function PlaylistContainer(props) {
   return (
     <div className='PlaylistContainer'>
       <Playlist 
-        title={props.playlistDetails.name}
-        setPlaylistTitle={props.setPlaylistDetails}
-        changeTitle={props.onChangeTitle}
+        playlistTitle={props.playlistTitle}
         tracks={props.tracks}
         removeTrack={props.removeTrack}
         savePlaylist={props.savePlaylist}
@@ -17,11 +15,9 @@ function PlaylistContainer(props) {
 }
 
 PlaylistContainer.propTypes = {
-  playlistDetails: PropTypes.object,
-  onChangeTitle: PropTypes.func,
+  playlistTitle: PropTypes.string,
   tracks: PropTypes.array,
   removeTrack: PropTypes.func,
-  setPlaylistDetails: PropTypes.func,
   savePlaylist: PropTypes.func,
 };
 

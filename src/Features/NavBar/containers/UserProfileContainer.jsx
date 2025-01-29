@@ -29,6 +29,7 @@ function UserProfileContainer({ profileData, setLoggedIn }) {
     localStorage.removeItem('code');
     localStorage.removeItem('access_token');
     localStorage.removeItem('verifier');
+    window.location.reload();
   }
 
   return (

@@ -102,6 +102,10 @@
     display: none;
   }
 
+  .searchBar {
+    max-width: none;
+  }
+
 }
 
 @media only screen and (max-width: 540px) {

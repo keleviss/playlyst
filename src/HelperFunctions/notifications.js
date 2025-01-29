@@ -19,4 +19,8 @@ export const notifications = {
     type: "warning",
     body: "You don't have any tracks in your playlist! Add tracks to continue."
   },
+  savePlaylist: {
+    type: "success",
+    body: "Your playlist was successfully saved to your Spotify account!"
+  },
 };

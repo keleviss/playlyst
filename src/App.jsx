@@ -28,6 +28,11 @@ function App() {
 
   const [searchResults, setSearchResults] = useState([]);
   const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [playlistDetails, setPlaylistDetails] = useState({
+    name: 'New Playlist',
+    description: 'New playlist description',
+    public: false
+  });
 
   const addTrackToPlaylist = (id) => {
     const track = searchResults.find(item => item.id === id);
@@ -40,35 +45,31 @@ function App() {
     setPlaylistTracks(prev => prev.filter(item => item.id !== id));
   };
 
-  const [playlistDetails, setPlaylistDetails] = useState({
-    name: 'New Playlist',
-    description: 'New playlist description',
-    public: false
-  });
-
-  const handleChangeTitle = (event) => {
-    setPlaylistDetails(prev => ({
-      ...prev,
-      name: event.target.value
-    }));
-  }
-
   const [savingModal, setSavingModal] = useState(false);
 
   const showSavingModal = () => {
     setSavingModal(true);
+    // window.scrollTo(0, 0);
+    document.body.style.overflow = 'hidden';
   }
 
   const closeSavingModal = () => {
     setSavingModal(false);
+    document.body.style.overflow = '';
   }
 
-  const savePlaylistHandle = async () => {
+  const savePlaylistHandle = (event) => {
+    event.preventDefault();
     if (loggedIn) {
       if (playlistTracks.length > 0) {
-        showSavingModal();
-        // TODO: Implement saving modal
-        // const playlist = await savePlaylist(profileData.id, playlistDetails, playlistTracks);
+        savePlaylist(profileData.id, playlistDetails, playlistTracks)
+          .then(response => {
+            if(response) {
+              console.log(response);
+              showNotification("savePlaylist");
+              setPlaylistTracks([]);
+            }
+          })
       } else {
         showNotification('saveNoTracks');
       }
@@ -93,25 +94,24 @@ function App() {
 
   return (
     <div className='App'>
+      <SavingModal
+        showModal={savingModal}
+        closeSavingModal={closeSavingModal}
+        playlistDetails={playlistDetails}
+        setPlaylistDetails={setPlaylistDetails}
+        onSavePlaylist={savePlaylistHandle}
+      />
       <NavBar
         profileData={profileData}
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
       />
       <div className='containerFull'>
-        {savingModal ? (
-          <SavingModal closeSavingModal={closeSavingModal}/>
-        ) : (
-          <></>
-        )}
-        {isNotificationTriggered ? (
-          <Notification
-            notification={notification}
-            hideNotification={hideNotification}
-          />
-        ) : (
-          <></>
-        )}
+        {isNotificationTriggered && <Notification
+          notification={notification}
+          hideNotification={hideNotification}
+          isNotificationTriggered={isNotificationTriggered}
+        />}
         <div className='containerFit'>
           <div className='main'>
             <SearchBarContainer
@@ -124,12 +124,10 @@ function App() {
               results={searchResults}
             />
             <PlaylistContainer
-              playlistDetails={playlistDetails}
-              setPlaylistDetails={setPlaylistDetails}
-              onChangeTitle={handleChangeTitle}
+              playlistTitle={playlistDetails.name}
               removeTrack={removeTrackFromPlaylist}
               tracks={playlistTracks}
-              savePlaylist={savePlaylistHandle}
+              savePlaylist={showSavingModal}
             />
           </div>
         </div>
