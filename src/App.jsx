@@ -9,6 +9,7 @@ import PlaylistEmbed from './Features/PlaylistEmbed/PlaylistEmbed';
 import { userLogin } from './SpotifyAPI/userLogin';
 import { savePlaylist } from './SpotifyAPI/savePlaylist';
 import { notifications } from './HelperFunctions/notifications';
+import spotifyLogo from '../assets/spotify_logo_white.png';
 
 function App() {
   const [profileData, setProfileData] = useState({});
@@ -157,7 +158,7 @@ function App() {
               </div>
               <div className='spotifyContainer'>
                 <span>Powered by</span>
-                <img className='spotifyLogo' src='/assets/spotify_logo_white.png' alt='Description of image' />
+                <img className='spotifyLogo' src={spotifyLogo} alt='Description of image' />
               </div>
             </div>
           </div>
