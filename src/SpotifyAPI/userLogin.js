@@ -92,7 +92,7 @@ export const redirectToAuthCodeFlow = async () => {
   const params = new URLSearchParams();
   params.append("client_id", clientId);
   params.append("response_type", "code");
-  params.append("redirect_uri", "https://playlistjammming.netlify.app/");
+  params.append("redirect_uri", "https://spotlistjam.netlify.app/");
   // params.append("redirect_uri", "http://localhost:5173/callback");
   params.append("scope", "user-read-private user-read-email playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public");
   params.append("code_challenge_method", "S256");
@@ -128,7 +128,7 @@ async function getAccessToken(clientId, code) {
   params.append("client_id", clientId);
   params.append("grant_type", "authorization_code");
   params.append("code", code);
-  params.append("redirect_uri", "https://playlistjammming.netlify.app/");
+  params.append("redirect_uri", "https://spotlistjam.netlify.app/");
   // params.append("redirect_uri", "http://localhost:5173/callback");
   params.append("code_verifier", verifier);
 
