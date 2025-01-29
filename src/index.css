@@ -1,10 +1,8 @@
-:root {}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', serif;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -123,7 +121,11 @@ a {
   }
 
   .main {
-    grid-template: 100px 500px 500px / 100%;
+    grid-template: 100px 500px 500px 60px/ 100%;
+  }
+
+  .main.playlist {
+    grid-template: 100px calc(100vh - 240px) 60px / 100%;
   }
 
   .SearchBarContainer {
@@ -132,18 +134,27 @@ a {
 
   .creditsContainer {
     grid-area: span 1 / span 1;
-    padding-bottom: 0.5rem;
   }
-
+  
   /* .TrackResultsContainer,
   .PlaylistContainer {
     padding: 0.8rem;
   } */
-
+  
 }
 
 @media only screen and (max-width: 540px) {
+
+  .main {
+    grid-template: 100px 500px 500px 120px/ 100%;
+  }
+
+  .main.playlist {
+    grid-template: 100px 650px 120px / 100%;
+  }
+
   .creditsContainer {
+    padding: 1rem 0;
     flex-direction: column;
     justify-content: center;
     gap: 1rem;

@@ -5,6 +5,7 @@ import ResultsContainer from './Features/SearchResults/containers/ResultsContain
 import PlaylistContainer from './Features/Playlist/containers/PlaylistContainer';
 import SavingModal from './Shared/components/SavingModal';
 import Notification from './Shared/components/Notification';
+import PlaylistEmbed from './Features/PlaylistEmbed/PlaylistEmbed';
 import { userLogin } from './SpotifyAPI/userLogin';
 import { savePlaylist } from './SpotifyAPI/savePlaylist';
 import { notifications } from './HelperFunctions/notifications';
@@ -31,7 +32,7 @@ function App() {
   const [playlistDetails, setPlaylistDetails] = useState({
     name: 'New Playlist',
     description: 'New playlist description',
-    public: false
+    public: false,
   });
 
   const addTrackToPlaylist = (id) => {
@@ -58,6 +59,12 @@ function App() {
     document.body.style.overflow = '';
   }
 
+  const [isPlaylistEmbedded, setisPlaylistEmbedded] = useState(false);
+
+  const togglePlaylistEmbed = () => {
+    setisPlaylistEmbedded(prev => !prev);
+  }
+
   const savePlaylistHandle = (event) => {
     event.preventDefault();
     if (loggedIn) {
@@ -65,9 +72,14 @@ function App() {
         savePlaylist(profileData.id, playlistDetails, playlistTracks)
           .then(response => {
             if (response) {
-              console.log(response);
               showNotification("savePlaylist");
-              setPlaylistTracks([]);
+              togglePlaylistEmbed();
+              setPlaylistDetails(prev => ({
+                ...prev,
+                id: response
+              }));
+              // setPlaylistTracks([]);
+              closeSavingModal();
             }
           })
       } else {
@@ -113,22 +125,32 @@ function App() {
           isNotificationTriggered={isNotificationTriggered}
         />}
         <div className='containerFit'>
-          <div className='main'>
+          <div className={isPlaylistEmbedded ? 'main playlist' : 'main'}>
             <SearchBarContainer
               setSearchResults={setSearchResults}
               loggedIn={loggedIn}
               showNotification={showNotification}
+              isPlaylistEmbedded={isPlaylistEmbedded}
+              togglePlaylistEmbed={togglePlaylistEmbed}
             />
-            <ResultsContainer
-              addTrack={addTrackToPlaylist}
-              results={searchResults}
-            />
-            <PlaylistContainer
-              playlistTitle={playlistDetails.name}
-              removeTrack={removeTrackFromPlaylist}
-              tracks={playlistTracks}
-              savePlaylist={showSavingModal}
-            />
+            {isPlaylistEmbedded ? (
+              <>
+                <PlaylistEmbed playlistId={playlistDetails.id} togglePlaylistEmbed={togglePlaylistEmbed} isPlaylistEmbedded={isPlaylistEmbedded} />
+              </>
+            ) : (
+              <>
+                <ResultsContainer
+                  addTrack={addTrackToPlaylist}
+                  results={searchResults}
+                />
+                <PlaylistContainer
+                  playlistTitle={playlistDetails.name}
+                  removeTrack={removeTrackFromPlaylist}
+                  tracks={playlistTracks}
+                  savePlaylist={showSavingModal}
+                />
+              </>
+            )}
             <div className='creditsContainer'>
               <div className='developerContainer'>
                 <span>Developed by <a href='https://github.com/keleviss' target='_blank'><i className="fa-brands fa-github"></i> Keleviss</a></span>

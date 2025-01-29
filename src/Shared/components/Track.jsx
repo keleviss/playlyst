@@ -6,10 +6,9 @@ function Track(props) {
     <div className={styles.track}>
       <img className={styles.trackImg} src={props.image} alt={props.album + " album cover"} />
       <div className={styles.trackDetails}>
-        <span className={styles.trackTitle}>{props.title.length <= 20 ? props.title : `${props.title.slice(0, 20)}...`}</span>
+        <span className={styles.trackTitle}>{props.title}</span>
         <span className={styles.trackArtist}>{props.artist}</span>
-        <span className={styles.trackAlbum}>{props.album.length <= 20 ? props.album : `${props.album.slice(0, 16)}...`}</span>
-        {/* <span className={styles.trackAlbum}>{props.album}</span> */}
+        <span className={styles.trackAlbum}>{props.album}</span>
         <span className={styles.trackDuration}>{props.duration}</span>
         <i onClick={props.action} className={'fa-solid ' + props.icon + ' ' + styles.plusIcon}></i>
       </div>

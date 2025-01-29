@@ -21,10 +21,10 @@ export const savePlaylist = async (userId, playlist, playlistTracks) => {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    const jsonResponse = await response.json();
-    console.log(jsonResponse);
+    const playlist = await response.json();
+    console.log(playlist);
 
-    const playlistId = jsonResponse.id;
+    const playlistId = playlist.id;
     const addItemsToPlaylistURL = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`
     const uris = JSON.stringify({
       "uris": playlistTracks.map(track => track.uri),
@@ -47,7 +47,7 @@ export const savePlaylist = async (userId, playlist, playlistTracks) => {
 
       const jsonResponse = await response.json();
       console.log(jsonResponse);
-      return(jsonResponse);
+      return(playlistId);
 
     } catch (error) {
       console.error('Error adding items to playlist: ', error);

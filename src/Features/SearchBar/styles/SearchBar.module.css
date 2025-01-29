@@ -89,7 +89,7 @@
 
 @media only screen and (max-width: 1060px) {
   .searchBarContainer {
-    padding: 0.8rem 0 0;
+    padding: 1rem 0 0;
     align-items: flex-start;
   }
 

@@ -1,10 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import styles from '../styles/SearchBar.module.css';
 import SearchBar from '../components/SearchBar';
 import { fetchSpotifyTracks } from '../../../SpotifyAPI/searchTracks';
 import { msToMinSec } from '../../../HelperFunctions/helperFuncs';
-import { redirectToAuthCodeFlow } from '../../../SpotifyAPI/userLogin';
 
 function SearchBarContainer(props) {
   const [input, setInput] = useState('');
@@ -20,8 +19,14 @@ function SearchBarContainer(props) {
 
   const fetchTracks = (event) => {
     event.preventDefault();
+
     if (props.loggedIn) {
       if (input !== '') {
+
+        if(props.isPlaylistEmbedded) {
+          props.togglePlaylistEmbed();
+        }
+
         fetchSpotifyTracks(input).then(results => {
           if (results) {
             const tracks = results.tracks.items;
@@ -36,6 +41,7 @@ function SearchBarContainer(props) {
                 "uri": item.uri,
               }
             }));
+
           } else {
             console.log('Error fetching tracks!');
           }
@@ -61,10 +67,5 @@ function SearchBarContainer(props) {
     </div>
   );
 }
-SearchBarContainer.propTypes = {
-  loggedIn: PropTypes.bool,
-  setSearchResults: PropTypes.func,
-  showNotification: PropTypes.func,
-};
 
 export default SearchBarContainer;

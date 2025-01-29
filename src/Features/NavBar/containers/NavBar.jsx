@@ -8,7 +8,9 @@ function Navbar(props) {
   return (
     <nav className={'NavBar ' + styles.navBar}>
       <div className={'containerFit ' + styles.containerFit}>
-        <h1 className={styles.navLogo}>Spotlist</h1>
+        <a href="./">
+          <h1 className={styles.navLogo}>Spotlist</h1>
+        </a>
         <div className={styles.loginContainer}>
           {props.loggedIn ? (
             <UserProfileContainer profileData={props.profileData} setLoggedIn={props.setLoggedIn} />
