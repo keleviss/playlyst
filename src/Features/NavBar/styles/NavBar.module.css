@@ -11,8 +11,15 @@
 }
 
 .navLogo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 2rem;
   font-weight: 600;
+}
+
+.playifyLogo {
+  width: 40px;
 }
 
 .loginContainer {

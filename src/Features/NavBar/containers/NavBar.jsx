@@ -3,13 +3,14 @@ import styles from '../styles/NavBar.module.css';
 import { redirectToAuthCodeFlow } from '../../../SpotifyAPI/userLogin';
 import Button from '../../../Shared/components/Buttons';
 import UserProfileContainer from './UserProfileContainer';
+import playifyLogo from '../../../assets/playify_logo.png';
 
 function Navbar(props) {
   return (
     <nav className={'NavBar ' + styles.navBar}>
       <div className={'containerFit ' + styles.containerFit}>
         <a href="./">
-          <h1 className={styles.navLogo}>Spotlist</h1>
+          <h1 className={styles.navLogo}> <img className={styles.playifyLogo} src={playifyLogo} alt="Playify Logo" /> Playify</h1>
         </a>
         <div className={styles.loginContainer}>
           {props.loggedIn ? (

@@ -10,6 +10,7 @@ import { userLogin } from './SpotifyAPI/userLogin';
 import { savePlaylist } from './SpotifyAPI/savePlaylist';
 import { notifications } from './HelperFunctions/notifications';
 import spotifyLogo from './assets/spotify_logo_white.png';
+// import playifyLogo from './assets/playify_logo.png';
 
 function App() {
   const [profileData, setProfileData] = useState({});
