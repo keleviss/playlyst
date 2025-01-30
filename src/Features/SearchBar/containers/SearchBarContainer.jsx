@@ -27,6 +27,7 @@ function SearchBarContainer(props) {
 
         if(props.isPlaylistEmbedded) {
           props.togglePlaylistEmbed();
+          props.clearPlaylist();
         }
 
         fetchSpotifyTracks(input).then(results => {

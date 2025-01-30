@@ -142,6 +142,7 @@ function App() {
               showNotification={showNotification}
               isPlaylistEmbedded={isPlaylistEmbedded}
               togglePlaylistEmbed={togglePlaylistEmbed}
+              clearPlaylist={clearPlaylist}
             />
             {isPlaylistEmbedded ? (
               <>
