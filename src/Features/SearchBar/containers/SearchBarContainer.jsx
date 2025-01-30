@@ -20,6 +20,8 @@ function SearchBarContainer(props) {
   const fetchTracks = (event) => {
     event.preventDefault();
 
+    event.target.blur();
+
     if (props.loggedIn) {
       if (input !== '') {
 
