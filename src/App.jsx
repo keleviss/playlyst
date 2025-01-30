@@ -36,6 +36,15 @@ function App() {
     public: false,
   });
 
+  function clearPlaylist() {
+    setPlaylistDetails({
+      name: 'New Playlist',
+      description: 'New playlist description',
+      public: false,
+    });
+    setPlaylistTracks([]);
+  }
+
   const addTrackToPlaylist = (id) => {
     const track = searchResults.find(item => item.id === id);
     if (track && !playlistTracks.some(item => item.id === id)) {
@@ -79,7 +88,7 @@ function App() {
                 ...prev,
                 id: response
               }));
-              // setPlaylistTracks([]);
+              clearPlaylist();
               closeSavingModal();
             }
           })
