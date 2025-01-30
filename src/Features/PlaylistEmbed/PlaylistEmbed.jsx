@@ -5,21 +5,10 @@ import styles from './PlaylistEmbed.module.css';
 /* eslint-disable react/prop-types */
 export default function PlaylistEmbed(props) {
 
-  // useEffect(() => {
-  //   const embedContainer = document.getElementById('embed-container');
-
-  //   const hidePlaylistEmbed = (event) => {
-  //     if (event.target === embedContainer) {
-  //       props.togglePlaylistEmbed();
-  //     }
-  //   }
-
-  //   window.addEventListener('click', hidePlaylistEmbed);
-
-  //   return () => {
-  //     window.removeEventListener('click', hidePlaylistEmbed);
-  //   }
-  // }, []);
+  const handleXMarkClick = () => {
+    props.clearPlaylist();
+    props.togglePlaylistEmbed();
+  }
 
   return (
     <div
@@ -28,7 +17,7 @@ export default function PlaylistEmbed(props) {
       {/* <Button className='btn' title='Close player' onClickHandler={props.togglePlaylistEmbed} /> */}
       <div className={styles.embedHeader}>
         <span>Player</span>
-        <i className={"fa-solid fa-xmark " + styles.xMark} onClick={props.togglePlaylistEmbed}></i>
+        <i className={"fa-solid fa-xmark " + styles.xMark} onClick={handleXMarkClick}></i>
       </div>
       <iframe
         title="Spotify Embed: Recommendation Playlist"

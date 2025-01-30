@@ -37,7 +37,7 @@ function App() {
     public: false,
   });
 
-  function clearPlaylist() {
+  const clearPlaylist = () => {
     setPlaylistDetails({
       name: 'New Playlist',
       description: 'New playlist description',
@@ -89,7 +89,6 @@ function App() {
                 ...prev,
                 id: response
               }));
-              clearPlaylist();
               closeSavingModal();
             }
           })
@@ -146,7 +145,12 @@ function App() {
             />
             {isPlaylistEmbedded ? (
               <>
-                <PlaylistEmbed playlistId={playlistDetails.id} togglePlaylistEmbed={togglePlaylistEmbed} isPlaylistEmbedded={isPlaylistEmbedded} />
+                <PlaylistEmbed 
+                playlistId={playlistDetails.id}
+                togglePlaylistEmbed={togglePlaylistEmbed}
+                isPlaylistEmbedded={isPlaylistEmbedded} 
+                clearPlaylist={clearPlaylist}
+                />
               </>
             ) : (
               <>
