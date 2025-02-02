@@ -1,4 +1,4 @@
-# Playify ![Playify Logo](https://playifyapp.netlify.app/assets/playify_logo-D8VAvbfV.png)
+# Playify <img src="https://example.com/playify-logo.png" alt="Playify Logo" width="20" />
 
 Playify is a sleek and intuitive web application that allows users to search for songs, create playlists, and save them to their Spotify account. Built with **React (Vite)** and integrated with the **Spotify API**, Playify offers a seamless music discovery and playlist management experience.
 
