@@ -4,7 +4,7 @@ Playify is a web application that was developed with React (Vite) to provide a n
 
 Here's quick demo of the app:
 <video>
-  <source src="https://raw.githubusercontent.com/keleviss/playlyst/refs/heads/master/playlyst_demo.gif" type="video/gif">
+  <source src="https://raw.githubusercontent.com/keleviss/playlyst/refs/heads/master/playlyst_demo.gif">
 </video>
 
 ## ✨ Features
