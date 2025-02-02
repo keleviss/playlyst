@@ -40,6 +40,7 @@ Playify is a sleek and intuitive web application that allows users to search for
 
 ### Important Files & Directories
 
+```
 📦 Playify
 ├── 📂 src
 │   ├── 📂 api                    # Spotify API integration
@@ -62,7 +63,7 @@ Playify is a sleek and intuitive web application that allows users to search for
 │   ├── 📜 main.jsx               # Entry point of the application
 │   └── ...
 └── 📜 README.md        # Project documentation
-
+```
 ---
 
 ## 🌟 Why Playify?
