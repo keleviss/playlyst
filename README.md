@@ -3,7 +3,7 @@
 Playify is a web application that was developed with React (Vite) to provide a new look and a user friendly way of creating, saving and playing Spotify playlists using the Spotify API. The app is responsive and works on most browsers and devices.
 
 Here's quick demo of the app:
-[Playlyst Demo](https://github.com/keleviss/playlyst/playify_demo.gif)
+[Playlyst Demo](https://github.com/keleviss/playlyst/blob/master/vite.config.js)
 
 ## ✨ Features
 
