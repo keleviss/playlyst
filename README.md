@@ -1,6 +1,6 @@
-# <img src="https://playlyst.netlify.app/assets/playify_logo-D8VAvbfV.png" alt="Playify Logo" width="32" /> Playlyst
+# <img src="https://playlyst.netlify.app/assets/playify_logo-D8VAvbfV.png" alt="Playlyst Logo" width="32" /> Playlyst
 
-Playify is a web application that was developed with React (Vite) to provide a new look and a user friendly way of creating, saving and playing Spotify playlists using the Spotify API. The app is responsive and works on most browsers and devices.
+Playlyst is a web application that was developed with React (Vite) to provide a new look and a user friendly way of creating, saving and playing Spotify playlists using the Spotify API. The app is responsive and works on most browsers and devices.
 
 Here's quick demo of the app -> [Playlyst Demo](https://raw.githubusercontent.com/keleviss/playlyst/refs/heads/master/playlyst_demo.gif)
 
@@ -42,7 +42,7 @@ Here's quick demo of the app -> [Playlyst Demo](https://raw.githubusercontent.co
 ### Important Files & Directories
 
 ```
-📦 Playify
+📦 Playlyst
 ├── 📂 src
 │   ├── 📂 api                    # Spotify API integration
 │   │   ├── 📜 savePlaylist.js    # Saves user playlists to Spotify
@@ -102,5 +102,5 @@ This project is licensed under the **MIT License** – feel free to modify and u
 
 
 
-Thank you for checking out Playify! 🎶 Happy streaming!
+Thank you for checking out Playlyst! 🎶 Happy streaming!
 
