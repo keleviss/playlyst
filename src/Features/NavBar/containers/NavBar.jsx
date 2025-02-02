@@ -10,7 +10,7 @@ function Navbar(props) {
     <nav className={'NavBar ' + styles.navBar}>
       <div className={'containerFit ' + styles.containerFit}>
         <a href="./">
-          <h1 className={styles.navLogo}> <img className={styles.playifyLogo} src={playifyLogo} alt="Playify Logo" /> Playify</h1>
+          <h1 className={styles.navLogo}> <img className={styles.playifyLogo} src={playifyLogo} alt="Playify Logo" /> Playlyst</h1>
         </a>
         <div className={styles.loginContainer}>
           {props.loggedIn ? (

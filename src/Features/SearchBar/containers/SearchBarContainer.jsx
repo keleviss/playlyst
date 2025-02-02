@@ -66,6 +66,7 @@ function SearchBarContainer(props) {
         onInputChange={onInputChange}
         onInputClear={onInputClear}
         fetchTracks={fetchTracks}
+        isPlaylistEmbedded={props.isPlaylistEmbedded}
       />
     </div>
   );
