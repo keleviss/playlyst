@@ -4,7 +4,7 @@ Playify is a sleek and intuitive web application that allows users to search for
 
 🚀 **[Live Demo](https://playifyapp.netlify.app/)**
 
----
+
 
 ## ✨ Features
 
@@ -14,7 +14,7 @@ Playify is a sleek and intuitive web application that allows users to search for
 - 💾 **Save Playlists** – Save your created playlists directly to your Spotify account.
 - ▶️ **Listen to Playlists** – Play your saved playlists within the app.
 
----
+
 
 ## 🛠️ Technologies Used
 
@@ -23,7 +23,7 @@ Playify is a sleek and intuitive web application that allows users to search for
 - **API Integration:** Spotify Web API
 - **Deployment:** Netlify
 
----
+
 
 ## 📖 Usage
 
@@ -34,7 +34,7 @@ Playify is a sleek and intuitive web application that allows users to search for
 5. Click **Save Playlist** to store it in your Spotify account.
 6. Head to the **Player** tab to listen to your saved playlists.
 
----
+
 
 ## 📂 Project Structure
 
@@ -64,7 +64,7 @@ Playify is a sleek and intuitive web application that allows users to search for
 │   └── ...
 └── 📜 README.md        # Project documentation
 ```
----
+
 
 ## 🌟 Why Playify?
 
@@ -74,25 +74,26 @@ Playify is a sleek and intuitive web application that allows users to search for
 - **Modern Web Technologies** – Built with Vite for fast development and performance.
 - **Responsive Design** – Styled with CSS Modules for modular and maintainable styles.
 
----
 
-## 🚀 Future Enhancements
+
+## 🚀 Future Improvements
 
 - 🎚️ Implement volume control and additional playback features.
 - 📌 Allow users to edit and reorder playlist tracks.
 
----
+
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to open an issue or submit a pull request.
 
----
+
 
 ## 📜 License
 
 This project is licensed under the **MIT License** – feel free to modify and use it!
 
----
+
 
 Thank you for checking out Playify! 🎶 Happy streaming!
+
