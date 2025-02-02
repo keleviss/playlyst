@@ -20,10 +20,10 @@ Here's a 🚀 **[Live Demo](https://playifyapp.netlify.app/)**
 
 ## 🛠️ Technologies Used
 
-- **Front-End:** React (Vite), CSS Modules, Vanilla CSS
-- **Authentication:** Spotify OAuth 2.0
-- **API Integration:** Spotify Web API
-- **Deployment:** Netlify
+**Front-End:** React, Vite, CSS Modules, Vanilla CSS
+**Authentication:** Spotify OAuth 2.0 (authentication code flow with PKCE)
+**API Integration:** Spotify Web API (user, search, playlists)
+**Deployment:** Netlify
 
 
 
