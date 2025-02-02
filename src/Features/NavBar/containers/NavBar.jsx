@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styles from '../styles/NavBar.module.css';
-import { redirectToAuthCodeFlow } from '../../../SpotifyAPI/userLogin';
+import { redirectToAuthCodeFlow } from '../../../api/userLogin';
 import Button from '../../../Shared/components/Buttons';
 import UserProfileContainer from './UserProfileContainer';
 import playifyLogo from '../../../assets/playify_logo.png';

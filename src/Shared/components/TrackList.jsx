@@ -32,13 +32,6 @@ function TrackList(props) {
             <></>
           )
         }
-        {/* <Track icon={props.icon}/>
-        <Track icon={props.icon}/>
-        <Track icon={props.icon}/>
-        <Track icon={props.icon}/>
-        <Track icon={props.icon}/>
-        <Track icon={props.icon}/>
-        <Track icon={props.icon}/> */}
       </ul>
     </>
   );

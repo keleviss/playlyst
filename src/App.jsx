@@ -6,9 +6,9 @@ import PlaylistContainer from './Features/Playlist/containers/PlaylistContainer'
 import SavingModal from './Shared/components/SavingModal';
 import Notification from './Shared/components/Notification';
 import PlaylistEmbed from './Features/PlaylistEmbed/PlaylistEmbed';
-import { userLogin } from './SpotifyAPI/userLogin';
-import { savePlaylist } from './SpotifyAPI/savePlaylist';
-import { notifications } from './HelperFunctions/notifications';
+import { userLogin } from './api/userLogin';
+import { savePlaylist } from './api/savePlaylist';
+import { notifications } from './utils/notifications';
 import spotifyLogo from './assets/spotify_logo_white.png';
 
 function App() {

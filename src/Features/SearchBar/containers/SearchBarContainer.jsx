@@ -2,8 +2,8 @@
 import { useState } from 'react';
 import styles from '../styles/SearchBar.module.css';
 import SearchBar from '../components/SearchBar';
-import { fetchSpotifyTracks } from '../../../SpotifyAPI/searchTracks';
-import { msToMinSec } from '../../../HelperFunctions/helperFuncs';
+import { fetchSpotifyTracks } from '../../../api/searchTracks';
+import { msToMinSec } from '../../../utils/msToMinSec';
 
 function SearchBarContainer(props) {
   const [input, setInput] = useState('');
