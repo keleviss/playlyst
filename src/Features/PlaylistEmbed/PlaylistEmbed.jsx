@@ -21,9 +21,10 @@ export default function PlaylistEmbed(props) {
       </div>
       <iframe
         title="Spotify Embed: Recommendation Playlist"
-        src={`https://open.spotify.com/embed/playlist/${props.playlistId}?utm_source=generator&theme=0`}
+        // src={`https://open.spotify.com/embed/playlist/${props.playlistId}?utm_source=generator&theme=0`}
+        src={`https://open.spotify.com/embed/playlist/${props.playlistId}`}
         className={styles.spotifyEmbed}
-        // allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
       />
     </div>
